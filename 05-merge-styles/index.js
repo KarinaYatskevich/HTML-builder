@@ -2,8 +2,8 @@ const path = require('path');
 const fs = require('fs');
 const { stdout } = process;
 
-const bundlePath = path.join(__dirname, 'project-dist', 'bundle.css');// create  var path bundle.css
-const stylesPath = path.join(__dirname, 'styles');// create var path styles.css
+const bundlePath = path.join(__dirname, 'project-dist', 'bundle.css');// create  path bundle.css
+const stylesPath = path.join(__dirname, 'styles');// create path styles.css
 
 function createBundleCss() {
     fs.readdir(stylesPath, 'utf-8', (err, files) => {// read directory
@@ -18,9 +18,9 @@ function createBundleCss() {
                 let stream = fs.createReadStream(path.join(stylesPath, file)); //create stream read css file
 
                 stream.on('data', (data) => {//create listener data
-                fs.appendFile(bundlePath, data, err => {// We add data from css file to end bundle.css
-                    if (err) throw err;
-                });
+                    fs.appendFile(bundlePath, data, err => {// We add data from css file to end bundle.css
+                        if (err) throw err;
+                    });
                 });
             }
         });
